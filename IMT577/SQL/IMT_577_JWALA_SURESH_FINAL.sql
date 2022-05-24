@@ -9,7 +9,7 @@ Notes: Create views
 
 -- SQL pass through views for dimension tables
 
-CREATE OR REPLACE VIEW VIEW_DIM_DATE
+CREATE OR REPLACE SECURE VIEW VIEW_DIM_DATE
 AS
 SELECT
         DATE_PKEY,
@@ -55,7 +55,7 @@ SELECT * FROM VIEW_DIM_DATE;
 -------------VIEW_DIM_CHANNEL
 --==================================================
 
-CREATE OR REPLACE VIEW VIEW_DIM_CHANNEL
+CREATE OR REPLACE SECURE VIEW VIEW_DIM_CHANNEL
 AS
 SELECT
     DimChannelID
@@ -71,7 +71,7 @@ SELECT * FROM VIEW_DIM_CHANNEL;
 -------------VIEW_DIM_CUSTOMER
 --==================================================
 
-CREATE OR REPLACE VIEW VIEW_DIM_CUSTOMER
+CREATE OR REPLACE SECURE VIEW VIEW_DIM_CUSTOMER
 AS
 SELECT
     DimCustomerID
@@ -91,7 +91,7 @@ SELECT * FROM VIEW_DIM_CUSTOMER;
 -------------VIEW_DIM_LOCATION
 --==================================================
 
-CREATE OR REPLACE VIEW VIEW_DIM_LOCATION
+CREATE OR REPLACE SECURE VIEW VIEW_DIM_LOCATION
 AS
 SELECT
     DimLocationID
@@ -108,7 +108,7 @@ SELECT * FROM VIEW_DIM_LOCATION;
 -------------VIEW_DIM_PRODUCT
 --==================================================
 
-CREATE OR REPLACE VIEW VIEW_DIM_PRODUCT
+CREATE OR REPLACE SECURE VIEW VIEW_DIM_PRODUCT
 AS
 SELECT
     DimProductID
@@ -126,7 +126,7 @@ SELECT
     ,ProductCost
     ,ProductRetailProfit
     ,ProductWholesaleUnitProfit
-    ,ProductProfitMarginUnitProfit
+    ,ProductProfitMarginUnitPercent
 FROM DIM_PRODUCT;
 
 SELECT * FROM VIEW_DIM_PRODUCT;
@@ -134,7 +134,7 @@ SELECT * FROM VIEW_DIM_PRODUCT;
 -------------VIEW_DIM_RESELLER
 --==================================================
 
-CREATE OR REPLACE VIEW VIEW_DIM_RESELLER
+CREATE OR REPLACE SECURE VIEW VIEW_DIM_RESELLER
 AS
 SELECT
     DimResellerID
@@ -152,7 +152,7 @@ SELECT * FROM VIEW_DIM_RESELLER;
 -------------VIEW_DIM_STORE
 --==================================================
 
-CREATE OR REPLACE VIEW VIEW_DIM_STORE
+CREATE OR REPLACE SECURE VIEW VIEW_DIM_STORE
 AS
 SELECT
     DimStoreID
@@ -171,7 +171,7 @@ SELECT * FROM VIEW_DIM_STORE;
 -------------VIEW_FACT_PRODUCTSALESTARGET
 --==================================================
 
-CREATE OR REPLACE VIEW VIEW_FACT_PRODUCTSALESTARGET
+CREATE OR REPLACE SECURE VIEW VIEW_FACT_PRODUCTSALESTARGET
 AS
 SELECT
     DimProductID
@@ -185,7 +185,7 @@ SELECT * FROM VIEW_FACT_PRODUCTSALESTARGET;
 -------------VIEW_FACT_SRCSALESTARGET
 --==================================================
 
-CREATE OR REPLACE VIEW VIEW_FACT_SRCSALESTARGET
+CREATE OR REPLACE SECURE VIEW VIEW_FACT_SRCSALESTARGET
 AS
 SELECT
     DimStoreID
@@ -201,7 +201,7 @@ SELECT * FROM VIEW_FACT_SRCSALESTARGET;
 -------------VIEW_FACT_SALESACTUAL
 --==================================================
 
-CREATE OR REPLACE VIEW VIEW_FACT_SALESACTUAL
+CREATE OR REPLACE SECURE VIEW VIEW_FACT_SALESACTUAL
 AS
 SELECT
 	DimProductID
@@ -228,7 +228,7 @@ SELECT * FROM VIEW_FACT_SALESACTUAL;
 
 --a. How are they performing compared to target? Will they meet their 2014 target?
 
-CREATE OR REPLACE VIEW VIEW_STORE_PERFORMANCE
+CREATE OR REPLACE SECURE VIEW VIEW_STORE_PERFORMANCE
 AS
 SELECT  
     YEAR,
@@ -302,7 +302,7 @@ SELECT * FROM VIEW_STORE_PERFORMANCE;
 
 --b. Should either store be closed? Why or why not?
 
-CREATE OR REPLACE VIEW VIEW_STORE_PROFIT
+CREATE OR REPLACE SECURE VIEW VIEW_STORE_PROFIT
 AS
 SELECT 
     YEAR,
@@ -368,7 +368,7 @@ SELECT * FROM VIEW_STORE_PROFIT;
 
 --c. What should be done in the next year to maximize store profits?
 
-CREATE OR REPLACE VIEW VIEW_MAXIMIZE_STORE_PROFIT
+CREATE OR REPLACE SECURE VIEW VIEW_MAXIMIZE_STORE_PROFIT
 AS
 SELECT  
     YEAR,
@@ -417,7 +417,7 @@ SELECT * FROM VIEW_MAXIMIZE_STORE_PROFIT;
 
 --Q2. Recommend 2013 bonus amounts for each store if the total bonus pool is $2,000,000 using a comparison of 2013 actual sales vs. 2013 sales targets as the basis for the recommendation.
 
-CREATE OR REPLACE VIEW VIEW_BONUS
+CREATE OR REPLACE SECURE VIEW VIEW_BONUS
 AS
 SELECT 
     YEAR,
@@ -483,7 +483,7 @@ SELECT * FROM VIEW_BONUS;
 
 --Q3. Assess product sales by day of the week at stores 10 and 21. What can we learn about sales trends?
 
-CREATE OR REPLACE VIEW VIEW_PRODUCT_SALES
+CREATE OR REPLACE SECURE VIEW VIEW_PRODUCT_SALES
 AS
 SELECT 
     DATE,
@@ -544,7 +544,7 @@ SELECT * FROM VIEW_PRODUCT_SALES;
 
 --Q4 Should any new stores be opened? Include all stores in your analysis if necessary. If so, where? Why or why not?
 
-CREATE OR REPLACE VIEW VIEW_NEW_STORES
+CREATE OR REPLACE SECURE VIEW VIEW_NEW_STORES
 AS
 SELECT 
     YEAR,
